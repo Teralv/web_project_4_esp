@@ -25,7 +25,7 @@
         <img class="profile__add-btn" src="./images/__add-btn.png" alt="Botón para agregar contenido">
       </section>
 
-      <section class="popup popup-profile popup_opened">
+      <section class="popup popup_opened-profile">
         <div class="popup_background-theme"></div>
         <form class="popup__container popup__container-profile">
           <img class="popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
@@ -36,7 +36,7 @@
         </form>
       </section>
 
-      <section class="popup  popup-places popup_OPENEDD">
+      <section class="popup popup_opened-places">
         <div class="popup_background-theme"></div>
         <form class="popup__container popup__container-places">
           <img class="popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
@@ -48,6 +48,30 @@
           <button class="popup__btn popup__button2">Crear</button>
         </form>
         <div class="fondo"></div>
+      </section>
+
+      <section class="elements"></section>
+
+      <template id="elements">
+        <div class="element">
+          <img src="https://code.s3.yandex.net/web-code/yosemite.jpg" class="element__image" alt="foto del valle de yosemite">
+          <div class="element__background">
+            <div class="element__info">
+              <h3 class="element__name"></h3>
+              <button class="element__heart"></button>
+              <button class="element__trash"></button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <section class="image-popup image-popup_opened">
+        <div class="image-popup_background-theme"></div>
+        <div class="image-popup__container">
+          <h3 class="image-popup__title">Foto del monte</h3>
+          <img class="image-popup__image" src="https://code.s3.yandex.net/web-code/yosemite.jpg" alt="Imagen en tamaño real">
+          <img class="image-popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+        </div>
       </section>
 
     </div>
