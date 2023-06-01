@@ -9,21 +9,46 @@
 </head>
 <body class="root">
     <div class="page">
-        <header class="header">
-          <img class="header__logo" src="./images/header__logo.png" alt="Logo de Alrededor de los EE.UU.">
-        </header>
+      <header class="header">
+        <img class="header__logo" src="./images/header__logo.png" alt="Logo de Alrededor de los EE.UU.">
+      </header>
 
-        <section class="line"></section>
+      <section class="line"></section>
 
-        <section class="profile">
-          <img class="profile__photo" src="./images/__author.png" alt="Foto de perfil">
-          <div class="profile__info">
-            <h2 class="profile__author">Jacques Cousteau</h2>
-            <img class="profile__edit-btn" src="./images/__edit-btn.png" alt="Botón para editar contenido del perfil">
-            <p class="profile__about-me">Explorer</p>
-          </div>
-          <img class="profile__add-btn" src="./images/__add-btn.png" alt="Bot[on para agregar contenido">
-        </section>
+      <section class="profile">
+        <img class="profile__photo" src="./images/__author.png" alt="Foto de perfil">
+        <div class="profile__info">
+          <h2 class="profile__author">Jacques Cousteau</h2>
+          <img class="profile__edit-btn" src="./images/__edit-btn.png" alt="Botón para editar contenido del perfil">
+          <p class="profile__about-me">Explorer</p>
+        </div>
+        <img class="profile__add-btn" src="./images/__add-btn.png" alt="Botón para agregar contenido">
+      </section>
+
+      <section class="popup popup-profile popup_opened">
+        <div class="popup_background-theme"></div>
+        <form class="popup__container popup__container-profile">
+          <img class="popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+          <h3 class="popup__title">Editar perfil</h3>
+          <input class="popup__name" type="text" placeholder="Nombre">
+          <input class="popup__about-me" type="text" placeholder="Acerca de mi">
+          <button class="popup__btn">Guardar</button>
+        </form>
+      </section>
+
+      <section class="popup  popup-places popup_OPENEDD">
+        <div class="popup_background-theme"></div>
+        <form class="popup__container popup__container-places">
+          <img class="popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+          <h3 class="popup__title">Nuevo lugar</h3>
+          <input class="popup__place popup__input" id="popup__place-input" type="text" placeholder="Título" minlength="2" maxlength="30" required>
+          <span class="popup__place-input-error"></span>
+          <input class="popup__url popup__input" id="popup__url-input" type="url" placeholder="Enlace a la imagen">
+          <span class="popup__url-input-error"></span>
+          <button class="popup__btn popup__button2">Crear</button>
+        </form>
+        <div class="fondo"></div>
+      </section>
 
     </div>
 </body>
