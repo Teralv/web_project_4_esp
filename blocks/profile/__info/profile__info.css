@@ -1,0 +1,8 @@
+.profile__info {
+  width: 415px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  margin: auto auto auto 30px;
+}

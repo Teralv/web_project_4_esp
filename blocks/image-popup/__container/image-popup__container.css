@@ -1,0 +1,8 @@
+.image-popup__container {
+  z-index: 5;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 816px;
+  height: 540px;
+}

@@ -1,0 +1,13 @@
+.popup{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+}
+
+input:focus {
+  outline: solid #3E94CF;
+  border-radius: 3px;
+}

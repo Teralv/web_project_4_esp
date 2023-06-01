@@ -1,0 +1,12 @@
+.profile__edit-btn {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+.profile__edit-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
