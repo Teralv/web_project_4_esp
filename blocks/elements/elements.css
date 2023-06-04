@@ -1,12 +1,13 @@
 .elements {
-  padding-top: 36px;
+  /*padding-top: 36px;*/
   display: flex;
   align-items: center;
-  width: 880px;
+  width: 282px;
   margin: 0 auto;
-  padding-top: 46px;
+  /*padding-top: 46px;*/
   flex-direction: row;
   flex-wrap: wrap;
   row-gap: 20px;
   column-gap: 17px;
+  justify-content: space-between;
 }

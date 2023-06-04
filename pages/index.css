@@ -6,7 +6,8 @@
 
 /* General settings */
 @import url(../blocks/root/root.css);
-@import url(../blocks/page/page.css);
+/*@import url(../blocks/page/page.css);*/
+
 
 /* Element block */
 @import url(../blocks/element/element.css);
@@ -16,9 +17,17 @@
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__trash/element__trash.css);
+@import url(../blocks/element/__heart/_black/element__heart_black.css);
 
 /* Elements block */
 @import url(../blocks/elements/elements.css);
+
+/* Elements block */
+@import url(../blocks/elements-grid/elements-grid.css);
+
+/* Footer block */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 
 /* Header block */
 @import url(../blocks/header/header.css);
@@ -61,9 +70,4 @@
 
 /* Footer block */
 @import url(../blocks/);
-@import url();
-@import url();
-@import url();
-@import url();
-@import url();
 @import url();

@@ -1,8 +1,13 @@
 .element__heart {
   border: none;
-  background-image: url(../web_project_4_esp/images/__heart.png);
-  width: 20.76px;
-  height: 18.13px;
+  background-image: url(../../../images/__heart.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  width: 29px;
+  height: 19px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .element__heart:hover {

@@ -2,7 +2,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 282px;
+  width: 100%;
   height: 361px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 970px){
+  .element {
+    border: 1px solid red;
+    height: auto;
+  }
+
+  .elements {
+    width: 700px;
+
+  }
 }
