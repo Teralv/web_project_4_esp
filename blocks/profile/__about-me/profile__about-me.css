@@ -1,3 +1,10 @@
 .profile__about-me {
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 970px){
+  .profile__about-me {
+    align-self: center;
+    margin-bottom: 35px;
+  }
+}

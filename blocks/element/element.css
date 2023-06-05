@@ -6,15 +6,3 @@
   height: 361px;
   border-radius: 10px;
 }
-
-@media screen and (max-width: 970px){
-  .element {
-    border: 1px solid red;
-    height: auto;
-  }
-
-  .elements {
-    width: 700px;
-
-  }
-}

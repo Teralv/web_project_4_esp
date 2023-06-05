@@ -6,3 +6,10 @@
   position: relative;
   margin: auto auto auto 30px;
 }
+
+@media screen and (max-width: 970px){
+  .profile__info {
+    margin: auto;
+    margin-top: 20px;
+  }
+}

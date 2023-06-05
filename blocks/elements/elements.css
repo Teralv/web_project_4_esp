@@ -1,13 +1,17 @@
 .elements {
-  /*padding-top: 36px;*/
   display: flex;
   align-items: center;
   width: 282px;
   margin: 0 auto;
-  /*padding-top: 46px;*/
   flex-direction: row;
   flex-wrap: wrap;
   row-gap: 20px;
   column-gap: 17px;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 970px){
+  .elements {
+    width: 90%;
+  }
 }

@@ -22,12 +22,12 @@
           <img class="profile__edit-btn" src="./images/__edit-btn.png" alt="Botón para editar contenido del perfil">
           <p class="profile__about-me">Explorer</p>
         </div>
-        <img class="profile__add-btn" src="./images/__add-btn.png" alt="Botón para agregar contenido">
+        <div class="profile__add-btn"><p>+</p></div>
       </section>
 
       <section class="popup popup__profile popup_opened-profile">
         <div class="popup_background-theme"></div>
-        <form class="popup__container popup__container-profile">
+        <form class="popup__container popup__container-profile" id="popup__profile">
           <img class="popup__close-btn popup__profile-close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
           <h3 class="popup__title">Editar perfil</h3>
           <input class="popup__name" type="text" placeholder="Nombre">
@@ -38,7 +38,7 @@
 
       <section class="popup popup__add-places popup_opened-places">
         <div class="popup_background-theme"></div>
-        <form class="popup__container popup__container-places">
+        <form class="popup__container popup__container-places" id="popup__add-places">
           <img class="popup__close-btn popup__places-close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
           <h3 class="popup__title">Nuevo lugar</h3>
           <input class="popup__place" type="text" placeholder="Título" minlength="2" maxlength="30" required>
@@ -132,7 +132,7 @@
       <section class="image-popup image-popup_opened">
         <div class="image-popup_background-theme"></div>
         <div class="image-popup__container">
-          <h3 class="image-popup__title">Foto del monte</h3>
+          <h3 class="image-popup__title"></h3>
           <img class="image-popup__image" src="https://code.s3.yandex.net/web-code/yosemite.jpg" alt="Imagen en tamaño real">
           <img class="image-popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
         </div>
