@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 5;
   top: 20%;
-  left: 29%;
+  left: auto;
 
   display: flex;
   flex-direction: column;
@@ -17,9 +17,9 @@
   height: 330px;
 }
 
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 550px) {
   .popup__container {
-    width: 80%;
-    left: auto;
+    width: 282px;
+    padding: 25px 22px;
   }
 }

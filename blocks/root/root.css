@@ -8,17 +8,41 @@
   color: #FFF;
   cursor: default;
   overflow-x: hidden;
+  margin: auto;
+}
+
+input:focus {
+  outline: solid #3E94CF;
+  border-radius: 3px;
 }
 
 @media screen and (min-width: 768px) {
   .root {
     width: min(100%, 1280px);
-    padding: 0 5%;
+
   }
 }
 
 @media screen and (min-width: 1280px) {
   .root {
     padding: 0 200px;
+  }
+}
+
+@media screen and (min-width: 882px) and (max-width: 1280px) {
+  .root {
+    width: 882px;
+  }
+}
+
+@media screen and (max-width: 1280px){
+  .root {
+    max-width: 90vw;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .root {
+    max-width: 320px;
   }
 }

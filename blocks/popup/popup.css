@@ -6,8 +6,3 @@
   align-items: center;
   justify-content: center;
 }
-
-input:focus {
-  outline: solid #3E94CF;
-  border-radius: 3px;
-}

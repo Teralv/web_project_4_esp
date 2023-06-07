@@ -2,8 +2,8 @@
   margin: 45px auto auto auto;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
   .header {
-    margin-left: 27px;
+    width: 100%;
   }
 }
