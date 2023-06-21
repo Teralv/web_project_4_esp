@@ -8,9 +8,13 @@
 
 @media screen and (max-width: 675px){
   .profile__author {
+  text-align: center;
+  }
+}
+
+@media screen and (max-width: 675px){
+  .profile__author {
   font-size: 22px;
   line-height: 56px;
-  text-align: center;
-
   }
 }

@@ -6,8 +6,6 @@
 
 /* General settings */
 @import url(../blocks/root/root.css);
-/*@import url(../blocks/page/page.css);*/
-
 
 /* Element block */
 @import url(../blocks/element/element.css);
@@ -21,9 +19,6 @@
 
 /* Elements block */
 @import url(../blocks/elements/elements.css);
-
-/* Elements block */
-@import url(../blocks/elements-grid/elements-grid.css);
 
 /* Footer block */
 @import url(../blocks/footer/footer.css);
@@ -69,5 +64,5 @@
 @import url(../blocks/profile/__photo/profile__photo.css);
 
 /* Footer block */
-@import url(../blocks/);
-@import url();
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/footer/footer.css);

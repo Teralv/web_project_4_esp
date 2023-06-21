@@ -1,3 +1,5 @@
 .popup_opened-places {
-  display: none;
+  visibility: visible;
+  opacity: 1;
 }
+

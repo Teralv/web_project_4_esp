@@ -1,11 +1,21 @@
-.elements {
-  display: flex;
-  align-items: center;
-  width: 282px;
-  margin: 0 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
+#elements {
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  grid-template-rows: auto;
+  justify-content: center;
   row-gap: 20px;
   column-gap: 18px;
-  justify-content: space-between;
+  margin: 50px auto;
+}
+
+@media screen and (max-width: 970px){
+  #elements {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+@media screen and (max-width: 675px){
+  #elements {
+    grid-template-columns: repeat(1, 282px);
+  }
 }

@@ -1,5 +1,4 @@
-.element__heart-black{
+.element__heart_black{
   opacity: 1;
-  background-image: url(../../../../images/__black_heart.png);
-  background-color: #FFFFFF;;
+  background: url(../../../../images/__black_heart.png) center no-repeat;
 }

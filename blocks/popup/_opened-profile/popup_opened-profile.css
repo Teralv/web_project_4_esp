@@ -1,3 +1,4 @@
 .popup_opened-profile {
-  display: none;
+  visibility: visible;
+  opacity: 1;
 }
