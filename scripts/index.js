@@ -4,13 +4,13 @@ const page = root.querySelector('.page');
 
 // Popup profile
 const profileContainer = page.querySelector('#popup__profile-form')
-const popupProfile = page.querySelector('.popup__profile');
+const popupProfile = page.querySelector('#popup__profile');
 const closeProfileBtn = popupProfile.querySelector('.popup__profile-close-btn');
 const editBtn = page.querySelector('.profile__edit-btn');
 
 // Popup place
 const placesContainer = page.querySelector('#popup__places-form');
-const popupPlaces = page.querySelector('.popup__places');
+const popupPlaces = page.querySelector('#popup__cards');
 const closePlacesBtn = popupPlaces.querySelector('.popup__places-close-btn');
 const addCardBtn = page.querySelector('.profile__add-btn');
 
