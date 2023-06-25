@@ -1,40 +1,40 @@
 //General
-const root = document.querySelector('.root');
-const page = root.querySelector('.page');
+const rootElement = document.querySelector('.root');
+const pageContainer = rootElement.querySelector('.page');
 
 // Popup profile
-const profileContainer = page.querySelector('#popup__profile-form')
-const popupProfile = page.querySelector('#popup__profile');
+const profileContainer = pageContainer.querySelector('#popup__profile-form')
+const popupProfile = pageContainer.querySelector('#popup__profile');
 const closeProfileBtn = popupProfile.querySelector('.popup__profile-close-btn');
-const editBtn = page.querySelector('.profile__edit-btn');
+const editBtn = pageContainer.querySelector('.profile__edit-btn');
 
 // Popup place
-const placesContainer = page.querySelector('#popup__places-form');
-const popupPlaces = page.querySelector('#popup__cards');
+const placesContainer = pageContainer.querySelector('#popup__places-form');
+const popupPlaces = pageContainer.querySelector('#popup__cards');
 const closePlacesBtn = popupPlaces.querySelector('.popup__places-close-btn');
-const addCardBtn = page.querySelector('.profile__add-btn');
+const addCardBtn = pageContainer.querySelector('.profile__add-btn');
 
 // Cards
-const cardElements = page.querySelector('#elements');
+const cardElements = pageContainer.querySelector('#elements');
 const trashBtn = cardElements.querySelector('.element__trash');
 
 // Image zoom
-const closeBigImage = page.querySelector('.image-popup__close-btn');
+const closeBigImage = pageContainer.querySelector('.image-popup__close-btn');
 
 //Edit profile
-editBtn.addEventListener('click', function () {
+const toggleProfilePopup = () => {
   popupProfile.classList.toggle('popup_opened-profile');
-});
+}
 
-closeProfileBtn.addEventListener('click', function () {
-  popupProfile.classList.toggle('popup_opened-profile');
-});
+editBtn.addEventListener('click', toggleProfilePopup);
 
-function handleFormSubmit (evt) {
+closeProfileBtn.addEventListener('click', toggleProfilePopup);
+
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
 
-  const popupName = page.querySelector('.profile__author');
-  const popupJob = page.querySelector('.profile__about-me');
+  const popupName = pageContainer.querySelector('.profile__author');
+  const popupJob = pageContainer.querySelector('.profile__about-me');
 
   const inputName = document.querySelector('.popup__name');
   const inputJob = document.querySelector('.popup__about-me');
@@ -45,57 +45,57 @@ function handleFormSubmit (evt) {
   popupProfile.classList.toggle('popup_opened-profile');
 }
 
-profileContainer.addEventListener('submit', function (evt) {
-  handleFormSubmit(evt)
+profileContainer.addEventListener('submit', (evt) => {
+  handleProfileFormSubmit(evt)
 });
 
 // Add card element
-addCardBtn.addEventListener('click', function () {
+const toggleAddCardsPopup = () => {
   popupPlaces.classList.toggle('popup_opened-places');
-});
+}
 
-closePlacesBtn.addEventListener('click', function () {
-  popupPlaces.classList.toggle('popup_opened-places');
-})
+addCardBtn.addEventListener('click', toggleAddCardsPopup);
+
+closePlacesBtn.addEventListener('click', toggleAddCardsPopup);
 
 // Initial Cards
 function initialElements () {
   const initialCards = [
     {
-      name: "Valle de Yosemite",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+      name: 'Valle de Yosemite',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg'
     },
     {
-      name: "Lago Louise",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+      name: 'Lago Louise',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg'
     },
     {
-      name: "Montañas Calvas",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+      name: 'Montañas Calvas',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg'
     },
     {
-      name: "Latemar",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+      name: 'Latemar',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg'
     },
     {
-      name: "Parque Nacional de la Vanoise",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+      name: 'Parque Nacional de la Vanoise',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg'
     },
     {
-      name: "Lago di Braies",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+      name: 'Lago di Braies',
+      link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg'
     }
   ];
 
-  initialCards.forEach(function(item) {
-    addElement(item.name, item.link)
+  initialCards.forEach((item) => {
+    createCardElement(item.name, item.link);
   })
 }
 
 initialElements();
 
 // Add card elements, like, trash and zoom functions
-function addElement (placeValue, imageValue) {
+function createCardElement (placeValue, imageValue) {
   const placeTemplate = document.querySelector('#element-template').content;
   const placeElement = placeTemplate.querySelector('.element').cloneNode(true);
 
@@ -123,28 +123,23 @@ function addElement (placeValue, imageValue) {
 
     bigImages.classList.toggle('image-popup_opened');
   })
-
 }
 
-function handleFormSubmit2 (evt) {
-  evt.preventDefault();
-  popupPlaces.classList.toggle('popup_opened-places');
-}
-
-placesContainer.addEventListener('submit', function (evt) {
+placesContainer.addEventListener('submit', (evt) => {
   const inputCardURL = document.querySelector('.popup__url');
   const inputCardName = document.querySelector('.popup__place');
 
-  addElement(inputCardName.value, inputCardURL.value);
+  createCardElement(inputCardName.value, inputCardURL.value);
 
-  handleFormSubmit2(evt);
+  evt.preventDefault();
+  popupPlaces.classList.toggle('popup_opened-places');
 
-  inputCardName.value = "";
-  inputCardURL.value = "";
+  inputCardName.value = '';
+  inputCardURL.value = '';
 });
 
 // Zoom
-closeBigImage.addEventListener('click', function () {
+closeBigImage.addEventListener('click', () => {
   const image = document.querySelector('.image-popup');
   image.classList.toggle('image-popup_opened')
 });
