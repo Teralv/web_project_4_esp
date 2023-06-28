@@ -1,5 +1,5 @@
 .image-popup__container {
-  z-index: 5;
+  z-index: 1;
   position: fixed;
   display: flex;
   flex-direction: column;

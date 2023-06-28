@@ -10,3 +10,17 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media screen and (max-width: 925px) {
+  .image-popup__close-btn {
+    top: -30px;
+    right: 122px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .image-popup__close-btn {
+    top: -30px;
+    right: 205px;
+  }
+}

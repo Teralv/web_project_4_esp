@@ -3,7 +3,7 @@ const rootElement = document.querySelector('.root');
 const pageContainer = rootElement.querySelector('.page');
 
 // Popup profile
-const profileContainer = pageContainer.querySelector('#popup__profile-form')
+const profileContainer = pageContainer.querySelector('#popup__profile-form');
 const popupProfile = pageContainer.querySelector('#popup__profile');
 const closeProfileBtn = popupProfile.querySelector('.popup__profile-close-btn');
 const editBtn = pageContainer.querySelector('.profile__edit-btn');
@@ -19,11 +19,12 @@ const cardElements = pageContainer.querySelector('#elements');
 const trashBtn = cardElements.querySelector('.element__trash');
 
 // Image zoom
+const popupImage = pageContainer.querySelector('.image-popup')
 const closeBigImage = pageContainer.querySelector('.image-popup__close-btn');
 
 //Edit profile
 const toggleProfilePopup = () => {
-  popupProfile.classList.toggle('popup_opened-profile');
+  popupProfile.classList.toggle('popup__profile_opened');
 }
 
 editBtn.addEventListener('click', toggleProfilePopup);
@@ -42,16 +43,49 @@ function handleProfileFormSubmit (evt) {
   popupName.textContent = inputName.value;
   popupJob.textContent = inputJob.value;
 
-  popupProfile.classList.toggle('popup_opened-profile');
+  toggleProfilePopup();
 }
 
 profileContainer.addEventListener('submit', (evt) => {
   handleProfileFormSubmit(evt)
 });
 
+// Escape and outside click functions
+function clickAndKeyClosePopup (popupElement) {
+  const popupList = Array.from(pageContainer.querySelectorAll('.popup'));
+  popupList.push(pageContainer.querySelector('.image-popup'));
+
+  popupList.forEach((popup) => {
+    popupElement.addEventListener('click', (evt) => {
+      if (!popup.classList.contains(`${popup.id}`)) {
+        if (evt.target.classList.contains('popup__background')) {
+          popup.classList.remove(`${popup.id}_opened`);
+        }
+      }
+    });
+    document.addEventListener('keydown', (evt) => {
+      if (evt.key === "Escape" && popup.classList.contains(`${popup.id}_opened`)) {
+        popup.classList.remove(`${popup.id}_opened`);
+      }
+    });
+  });
+}
+
+popupImage.addEventListener('click', (evt) => {
+  if (!popupImage.classList.contains('image-popup__container')) {
+    if (evt.target.classList.contains('image-popup__background')) {
+      popupImage.classList.remove('image-popup_opened');
+    }
+  }
+});
+
+clickAndKeyClosePopup(popupProfile);
+clickAndKeyClosePopup(popupPlaces);
+clickAndKeyClosePopup(popupImage);
+
 // Add card element
 const toggleAddCardsPopup = () => {
-  popupPlaces.classList.toggle('popup_opened-places');
+  popupPlaces.classList.toggle('popup__cards_opened');
 }
 
 addCardBtn.addEventListener('click', toggleAddCardsPopup);
@@ -114,14 +148,13 @@ function createCardElement (placeValue, imageValue) {
   });
 
   placeElement.querySelector('.element__image').addEventListener('click', function() {
-    const bigImages = document.querySelector('.image-popup');
     const bigImageTitle = document.querySelector('.image-popup__title');
     const bigImageLink = document.querySelector('.image-popup__image');
 
     bigImageTitle.textContent = placeValue;
     bigImageLink.src = imageValue;
 
-    bigImages.classList.toggle('image-popup_opened');
+    popupImage.classList.toggle('image-popup_opened');
   })
 }
 
@@ -132,7 +165,7 @@ placesContainer.addEventListener('submit', (evt) => {
   createCardElement(inputCardName.value, inputCardURL.value);
 
   evt.preventDefault();
-  popupPlaces.classList.toggle('popup_opened-places');
+  toggleAddCardsPopup();
 
   inputCardName.value = '';
   inputCardURL.value = '';
@@ -140,6 +173,5 @@ placesContainer.addEventListener('submit', (evt) => {
 
 // Zoom
 closeBigImage.addEventListener('click', () => {
-  const image = document.querySelector('.image-popup');
-  image.classList.toggle('image-popup_opened')
+  popupImage.classList.toggle('image-popup_opened')
 });
