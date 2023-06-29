@@ -79,6 +79,14 @@ popupImage.addEventListener('click', (evt) => {
   }
 });
 
+popupImage.removeEventListener('click', (evt) => {
+  if (!popupImage.classList.contains('image-popup__container')) {
+    if (evt.target.classList.contains('image-popup__background')) {
+      popupImage.classList.remove('image-popup_opened');
+    }
+  }
+});
+
 clickAndKeyClosePopup(popupProfile);
 clickAndKeyClosePopup(popupPlaces);
 clickAndKeyClosePopup(popupImage);
@@ -135,6 +143,7 @@ function createCardElement (placeValue, imageValue) {
 
   placeElement.querySelector('.element__name').textContent = placeValue;
   placeElement.querySelector('.element__image').src = imageValue;
+  placeElement.querySelector('.element__image').alt = `Imagen de ${placeValue}`;
 
   cardElements.prepend(placeElement);
 
@@ -153,6 +162,7 @@ function createCardElement (placeValue, imageValue) {
 
     bigImageTitle.textContent = placeValue;
     bigImageLink.src = imageValue;
+    bigImageLink.alt = `Imagen de ${placeValue}`;
 
     popupImage.classList.toggle('image-popup_opened');
   })

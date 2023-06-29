@@ -2,8 +2,10 @@
   width: 24px;
   height: 24px;
   position: absolute;
-  right: 0;
+  right: 0px;
   top: 15px;
+  /*right: 290px;
+  top: 32px;*/
 }
 
 .profile__edit-btn:hover {
@@ -11,8 +13,9 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 675px){
+/*@media screen and (max-width: 675px){
   .profile__edit-btn {
     right: -30px;
   }
-}
+}*/
+
