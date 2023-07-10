@@ -1,5 +1,10 @@
 .image-popup_opened {
   visibility: visible;
   opacity: 1;
-  z-index: 0;
+
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
 }
