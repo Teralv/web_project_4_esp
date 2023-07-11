@@ -27,6 +27,9 @@ const toggleProfilePopup = () => {
 
   inputProfileName.value = '';
   inputProfileAbout.value = '';
+
+  inputProfileName.placeholder = profileAuthor.textContent;
+  inputProfileAbout.placeholder = profileAbout.textContent;
 }
 
 editProfileBtn.addEventListener('click', toggleProfilePopup);
