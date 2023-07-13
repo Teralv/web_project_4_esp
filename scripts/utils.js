@@ -6,6 +6,7 @@ import {
   inputProfileAbout,
   closeProfileBtn,
   editProfileBtn,
+  submitProfileBtn,
   placesContainer,
   popupPlaces,
   closePlacesBtn,
@@ -24,12 +25,19 @@ function togglePopup(item) {
 //Toggle Edit Form
 const toggleProfilePopup = () => {
   popupProfile.classList.toggle('popup_opened');
-
-  inputProfileName.value = '';
-  inputProfileAbout.value = '';
 }
 
-editProfileBtn.addEventListener('click', toggleProfilePopup);
+const openProfilePopup = () => {
+  popupProfile.classList.add('popup_opened');
+
+  inputProfileName.value = profileAuthor.textContent;
+  inputProfileAbout.value = profileAbout.textContent;
+
+
+  submitProfileBtn.classList.add('popup__btn_inactive');
+}
+
+editProfileBtn.addEventListener('click', openProfilePopup);
 closeProfileBtn.addEventListener('click', toggleProfilePopup);
 
 // Toggle Submit New Card

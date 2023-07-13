@@ -17,6 +17,7 @@ export const inputProfileName = profileContainer.querySelector('#name-input');
 export const inputProfileAbout = profileContainer.querySelector('#about-input');
 export const closeProfileBtn = popupProfile.querySelector('.popup__profile-close-btn');
 export const editProfileBtn = pageContainer.querySelector('.profile__edit-btn');
+export const submitProfileBtn = popupProfile.querySelector('.popup__btn');
 
 // Popup place
 export const placesContainer = pageContainer.querySelector('#popup__places-form');
@@ -74,4 +75,7 @@ export function createNewCard(card) {
 }
 
 // Input validations
-const validation = new FormValidator().enableValidation()
+const validation = new FormValidator(document);
+
+
+validation.enableValidation();

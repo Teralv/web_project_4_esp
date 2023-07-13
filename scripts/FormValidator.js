@@ -28,17 +28,16 @@ export default class FormValidator {
   _hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-    })
+    });
   };
 
   _toggleButtonState = (inputList, buttonElement) => {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add('popup__btn_inactive');
-      buttonElement.disabled = true;
+
     } else {
       buttonElement.classList.remove('popup__btn_inactive');
     }
-    buttonElement.disabled = false;
   }
 
   _setEventListeners = (formElement) => {
@@ -48,7 +47,9 @@ export default class FormValidator {
     this._toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
+      console.log(inputElement.validity.valid)
       inputElement.addEventListener('input', () => {
+        console.log(inputElement.validity.valid)
         this._checkInputValidity(formElement, inputElement);
         this._toggleButtonState(inputList, buttonElement);
       });
@@ -57,8 +58,11 @@ export default class FormValidator {
 
   enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.form'));
+
     formList.forEach((formElement) => {
+      const buttonElement = formElement.querySelector('.popup__btn');
       formElement.addEventListener('submit', function (evt) {
+        buttonElement.classList.add('popup__btn_inactive');
         evt.preventDefault();
       });
 
