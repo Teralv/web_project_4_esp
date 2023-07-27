@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Around The US</title>
 </head>
 <body class="root">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/header__logo.png" alt="Logo de Alrededor de los EE.UU.">
+        <img class="header__logo" src="<%=require('./images/header__logo.png')%>" alt="Logo de Alrededor de los EE.UU."/>
       </header>
 
       <section class="line"></section>
 
       <section class="profile">
-        <img class="profile__photo" src="./images/__author.png" alt="Foto de perfil">
+        <img class="profile__photo" src="<%=require('./images/__author.png')%>" alt="Foto de perfil"/>
         <div class="profile__info">
           <h2 class="profile__author">Jacques Cousteau</h2>
-          <img class="profile__edit-btn" src="./images/__edit-btn.png" alt="Botón para editar contenido del perfil">
+          <img class="profile__edit-btn" src="<%=require('./images/__edit-btn.png')%>" alt="Botón para editar contenido del perfil">
           <p class="profile__about-me">Explorer</p>
         </div>
         <div class="profile__add-btn"><p>+</p></div>
@@ -27,9 +26,9 @@
 
       <section class="popup" id="popup__profile">
         <div class="popup__background"></div>
-        <form class="form popup__container" id="popup__profile-form">
+        <form class="form popup__container popup__section" id="popup__profile-form">
           <fieldset class="form__set">
-            <img class="popup__close-btn popup__profile-close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+            <img class="popup__close-btn popup__profile-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
             <h3 class="popup__title">Editar perfil</h3>
             <div class="form__field">
               <input id="name-input" class="form__input popup__name" placeholder="Nombre" value="Jacques Cousteau" type="text" minlength="2" maxlength="40" required>
@@ -46,9 +45,9 @@
 
       <section class="popup" id="popup__cards">
         <div class="popup__background"></div>
-        <form class="form popup__container" id="popup__places-form">
+        <form class="form popup__container popup__section" id="popup__places-form">
           <fieldset class="form__set">
-            <img class="popup__close-btn popup__places-close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+            <img class="popup__close-btn popup__places-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
             <h3 class="popup__title">Nuevo lugar</h3>
             <label class="form__field">
               <input id="place-input" class="form__input popup__place" type="text" placeholder="Título" minlength="2" maxlength="30" required>
@@ -82,20 +81,17 @@
 
       <div class="popup image-popup" id="image-popup">
         <div class="image-popup__background popup__background"></div>
-        <div class="image-popup__container">
+        <div class="image-popup__container popup__section">
           <h3 class="image-popup__title"></h3>
           <img class="image-popup__image" alt="Imagen en tamaño real">
-          <img class="image-popup__close-btn" src="./images/__close-icon.png" alt="Botón para cerrar formulario">
+          <img class="image-popup__close-btn popup__close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
         </div>
       </div>
-
 
       <section class="footer">
         <p class="footer__copyright">© 2023. Alvaro Ibarra Terán</p>
       </section>
 
-      <script type="module" src="./scripts/index.js"></script>
-      <script type="module" src="./scripts/utils.js"></script>
     </div>
 </body>
 </html>

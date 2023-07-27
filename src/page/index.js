@@ -1,5 +1,11 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import './index.css';
+
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section';
+import PopupWithImage from '../components/PopupWithImage';
+import PopupWithForm from '../components/PopupWithForm';
+import UserInfo from '../components/UserInfo';
 
 //General
 const rootElement = document.querySelector('.root');
@@ -8,7 +14,6 @@ const pageContainer = rootElement.querySelector('.page');
 //Profile container
 export const profileAuthor = pageContainer.querySelector('.profile__author');
 export const profileAbout = pageContainer.querySelector('.profile__about-me');
-
 
 // Popup profile
 const profileContainer = pageContainer.querySelector('#popup__profile-form');
@@ -26,6 +31,7 @@ export const closePlacesBtn = popupPlaces.querySelector('.popup__places-close-bt
 export const addCardBtn = pageContainer.querySelector('.profile__add-btn');
 export const inputPlaceName = placesContainer.querySelector('.popup__place');
 export const inputPlaceLink = placesContainer.querySelector('.popup__url');
+const submitPlacesBtn = placesContainer.querySelector('.popup__btn');
 
 // Popup image
 export const popupImage = pageContainer.querySelector('#image-popup');
@@ -58,15 +64,72 @@ const initialCards = [
   }
 ];
 
-// Create initial cards
-initialCards.forEach((initialCard) => {
-  const card = new Card(initialCard, '#element-template');
-  const cardElement = card.generateCard();
+// Render initial cards
+const initialCardList = new Section({
+  data: initialCards,
+  renderer: (item) => {
+    const defaultCard = new Card(item, '#element-template', {
+      handleCardClick: (link, name) => {
+        const popupImage = new PopupWithImage('#image-popup', link, name);
+        popupImage.open();
+      }
+    });
+    const defaultElementCard = defaultCard.generateCard();
+    initialCardList.addInitalItems(defaultElementCard);
+  }
+}, '#elements');
 
-  document.querySelector('#elements').append(cardElement);
-});
+initialCardList.renderedItems();
 
 // Create new cards
+function createCards(item) {
+  const card = new Card(item, '#element-template', {
+    handleCardClick: (link, name) => {
+      const imagePopup = new PopupWithImage('#image-popup', link, name);
+      imagePopup.open();
+    },
+  });
+  const cardElement = card.generateCard();
+  initialCardList.addItems(cardElement);
+}
+
+const cardsForm = new PopupWithForm({
+  popupSelector: '#popup__cards',
+  submitCallback: (item) => {
+    createCards(item);
+    cardsForm.close();
+  }
+});
+
+cardsForm.setEventListeners();
+
+// Change user information
+const userInfoPopup = new PopupWithForm({
+  popupSelector: '#popup__profile',
+  submitCallback: () => {
+    const setInfo = new UserInfo({
+      nameSelector: profileAuthor,
+      aboutSelector: profileAbout
+    })
+    setInfo.setUserInfo();
+  }
+});
+
+userInfoPopup.setEventListeners();
+
+const toggleAddCardsPopup = () => {
+  popupPlaces.classList.toggle('popup_opened');
+}
+
+addCardBtn.addEventListener('click', toggleAddCardsPopup);
+
+const openProfilePopup = () => {
+  popupProfile.classList.add('popup_opened');
+  submitProfileBtn.classList.add('popup__btn_inactive');
+}
+
+editProfileBtn.addEventListener('click', openProfilePopup);
+
 export function createNewCard(card) {
   const newCard = new Card(card, '#element-template');
   const newCardElement = newCard.generateCard();
