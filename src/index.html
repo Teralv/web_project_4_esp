@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around The US</title>
+    <link rel="icon" href="<%=require('./images/icon.png')%>">
 </head>
 <body class="root">
     <div class="page">
@@ -50,11 +51,11 @@
             <img class="popup__close-btn popup__places-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
             <h3 class="popup__title">Nuevo lugar</h3>
             <label class="form__field">
-              <input id="place-input" class="form__input popup__place" type="text" placeholder="Título" minlength="2" maxlength="30" required>
+              <input id="place-input" class="form__input popup__place" type="text" name="name" placeholder="Título" minlength="2" maxlength="30" required>
               <span class="form__input-error place-input-error"></span>
             </label>
             <label class="form__field">
-              <input id="url-input" class="form__input popup__url" type="url" placeholder="Enlace a la imagen" required>
+              <input id="url-input" class="form__input popup__url" type="url" name="link" placeholder="Enlace a la imagen" required>
               <span class="form__input-error url-input-error"></span>
             </label>
             <button class="popup__btn">Crear</button>
@@ -68,7 +69,7 @@
 
       <template id="element-template">
         <div class="element">
-          <img class="element__image" alt="Imagen de paisaje">
+          <img class="element__image" src="" alt="Imagen de paisaje">
           <div class="element__background">
             <div class="element__info">
               <h3 class="element__name"></h3>
@@ -88,9 +89,9 @@
         </div>
       </div>
 
-      <section class="footer">
+      <footer class="footer">
         <p class="footer__copyright">© 2023. Alvaro Ibarra Terán</p>
-      </section>
+      </footer>
 
     </div>
 </body>

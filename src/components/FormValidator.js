@@ -34,7 +34,6 @@ export default class FormValidator {
   _toggleButtonState = (inputList, buttonElement) => {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add('popup__btn_inactive');
-
     } else {
       buttonElement.classList.remove('popup__btn_inactive');
     }
@@ -47,9 +46,7 @@ export default class FormValidator {
     this._toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((inputElement) => {
-      console.log(inputElement.validity.valid)
       inputElement.addEventListener('input', () => {
-        console.log(inputElement.validity.valid)
         this._checkInputValidity(formElement, inputElement);
         this._toggleButtonState(inputList, buttonElement);
       });
