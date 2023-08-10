@@ -78,7 +78,7 @@ const profileInfo = new UserInfo({
 });
 
 const deleteCard = new PopupWithConfirmation({
-  popupSelector: document.querySelector('#popup__delte'),
+  popupSelector: document.querySelector('#popup__delete'),
   submitButton: document.querySelector('.popup__confirm-btn')
 });
 
