@@ -6,6 +6,8 @@ import Section from '../components/Section';
 import PopupWithImage from '../components/PopupWithImage';
 import PopupWithForm from '../components/PopupWithForm';
 import UserInfo from '../components/UserInfo';
+import Api from '../components/Api';
+import PopupWithConfirmation from '../components/PopupWithConfirmation';
 
 //General
 const rootElement = document.querySelector('.root');
@@ -36,6 +38,11 @@ const submitPlacesBtn = placesContainer.querySelector('.popup__btn');
 // Popup image
 export const popupImage = pageContainer.querySelector('#image-popup');
 
+document.querySelector('.profile__container').addEventListener('click', () => {
+  const prueba = document.querySelector('#popup__avatar-image');
+  prueba.classList.add('popup_opened');
+})
+
 // Initial cards
 const initialCards = [
   {
@@ -63,6 +70,41 @@ const initialCards = [
     link: 'https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg'
   }
 ];
+
+// Nuevo Codigo
+const profileInfo = new UserInfo({
+  nameSelector: profileAuthor,
+  aboutSelector: profileAbout
+});
+
+const deleteCard = new PopupWithConfirmation({
+  popupSelector: document.querySelector('#popup__delte'),
+  submitButton: document.querySelector('.popup__confirm-btn')
+});
+
+deleteCard.setEventListeners();
+
+const api = new Api({
+  baseURL: 'https://around.nomoreparties.co/v1/web_es_cohort_08',
+  headers: {
+    authorization: 'b7e71284-4020-44f4-a80f-43722c5b3ece',
+    'Content-Type': 'application/json'
+  }
+});
+
+const editProfile = new PopupWithForm({
+  popupSelector: '#popup__profile',
+  submitCallback: (data) => {
+    api.editProfileInfo(data.name, data.aboutMe).then((res) => {
+      profileInfo.getUserInfo(res);
+      editProfile.close()
+    })
+    .catch((err) => console.log(err))
+  }
+});
+editProfile.setEventListeners();
+
+
 
 // Render initial cards
 const initialCardList = new Section({
@@ -104,7 +146,7 @@ const cardsForm = new PopupWithForm({
 cardsForm.setEventListeners();
 
 // Change user information
-const userInfoPopup = new PopupWithForm({
+/*const userInfoPopup = new PopupWithForm({
   popupSelector: '#popup__profile',
   submitCallback: () => {
     const setInfo = new UserInfo({
@@ -115,7 +157,7 @@ const userInfoPopup = new PopupWithForm({
   }
 });
 
-userInfoPopup.setEventListeners();
+userInfoPopup.setEventListeners();*/
 
 const toggleAddCardsPopup = () => {
   popupPlaces.classList.toggle('popup_opened');

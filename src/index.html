@@ -16,7 +16,11 @@
       <section class="line"></section>
 
       <section class="profile">
-        <img class="profile__photo" src="<%=require('./images/__author.png')%>" alt="Foto de perfil"/>
+        <div class="profile__container">
+          <img class="profile__photo" src="<%=require('./images/__author.png')%>" alt="Foto de perfil"/>
+          <div class="profile__avatar">
+          </div>
+        </div>
         <div class="profile__info">
           <h2 class="profile__author">Jacques Cousteau</h2>
           <img class="profile__edit-btn" src="<%=require('./images/__edit-btn.png')%>" alt="Botón para editar contenido del perfil">
@@ -63,8 +67,31 @@
         </form>
       </section>
 
-      <div id="elements">
+      <section class="popup" id="popup__delete">
+        <div class="popup__background"></div>
+        <div class="popup__container popup__section" id="popup__confirmation-delete">
+          <h3 class="popup__title">¿Estás seguro/a?</h3>
+          <img class="popup__close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
+          <button class="popup__btn popup__confirm-btn">Sí</button>
+        </div>
+      </section>
 
+      <section class="popup" id="popup__avatar-image">
+        <div class="popup__background"></div>
+        <form class="form popup__container popup__section" id="popup__avatar-form">
+          <fieldset class="form__set">
+            <h3 class="popup__title">Cambiar foto de perfil</h3>
+            <img class="popup__close-btn popup__places-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
+            <label class="form__field">
+              <input id="avatar-url" class="form__input popup__url" type="url" name="link" placeholder="Enlace a la imagen" required>
+              <span class="form__input-error url-input-error"></span>
+            </label>
+            <button class="popup__btn">Guardar</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <div id="elements">
       </div>
 
       <template id="element-template">
@@ -73,8 +100,11 @@
           <div class="element__background">
             <div class="element__info">
               <h3 class="element__name"></h3>
-              <button class="element__heart"></button>
               <button class="element__trash"></button>
+              <div class="element__likes">
+                <button class="element__heart"></button>
+                <p class="element__like-counter"></p>
+              </div>
             </div>
           </div>
         </div>
@@ -88,18 +118,6 @@
           <img class="image-popup__close-btn popup__close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
         </div>
       </div>
-
-      <section class="popup popup__opened" id="popup__delete">
-        <div class="popup__background">
-          <form class="form popup__container popup__section" id="popup__confrimation-form">
-            <fieldset class="form__set">
-              <h3 class="popup__title">¿Estás seguro/a?</h3>
-              <img class="popup__close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
-              <button class="popup__btn">Sí</button>
-            </fieldset>
-          </form>
-        </div>
-      </section>
 
       <footer class="footer">
         <p class="footer__copyright">© 2023. Alvaro Ibarra Terán</p>

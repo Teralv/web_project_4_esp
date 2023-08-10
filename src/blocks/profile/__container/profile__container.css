@@ -1,0 +1,11 @@
+.profile__container:hover .profile__photo {
+  opacity: 0.3;
+}
+
+.profile__container:hover .profile__avatar {
+  background-image: url("../../../images/__edit-avatar.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 1;
+}
