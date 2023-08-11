@@ -74,18 +74,22 @@ const initialCards = [
 // Nuevo Codigo
 const profileInfo = new UserInfo({
   nameSelector: profileAuthor,
-  aboutSelector: profileAbout
+  aboutSelector: profileAbout,
+  avatarSelector: document.querySelector('.profile__photo')
 });
 
 const deleteCard = new PopupWithConfirmation({
-  popupSelector: document.querySelector('#popup__delete'),
+  popupSelector: '#popup__delete',
   submitButton: document.querySelector('.popup__confirm-btn')
 });
+
+const imagePopup = new PopupWithImage('#image-popup');
+imagePopup.setEventListeners();
 
 deleteCard.setEventListeners();
 
 const api = new Api({
-  baseURL: 'https://around.nomoreparties.co/v1/web_es_cohort_08',
+  baseURL: 'https://around.nomoreparties.co/v1/web_es_07',
   headers: {
     authorization: 'b7e71284-4020-44f4-a80f-43722c5b3ece',
     'Content-Type': 'application/json'
@@ -95,19 +99,70 @@ const api = new Api({
 const editProfile = new PopupWithForm({
   popupSelector: '#popup__profile',
   submitCallback: (data) => {
-    api.editProfileInfo(data.name, data.aboutMe).then((res) => {
-      profileInfo.getUserInfo(res);
-      editProfile.close()
+    api
+      .editProfileInfo(data.name, data.about)
+      .then((res) => {
+        profileInfo.setUserInfo({username: res.name, about: res.about});
+        editProfile.close()
     })
     .catch((err) => console.log(err))
   }
 });
 editProfile.setEventListeners();
 
+api.getUserInfo().then((res) => {
+  profileInfo.setUserInfo({username: res.name, about: res.about});
+  profileInfo.setUserAvatar(res.avatar);
+  profileInfo.userID = res._id;
+})
+.then(() => {
+  api.getInitialCards().then((res) => {
+    const cardSection = new Section({
+      data: res,
+      renderer: (data) => {
+        const cardElement = createCard(data);
+        cardSection.addInitalItems(cardElement)
+      }
+    }, '#elements')
+  })
+});
 
+function createCard(data) {
+  const cardElement = new Card(data , '#element-template', {
+    handleCardClick:({name, link}) => {
+      imagePopup.open({name, link})
+    },
+    handleDeleteClick: ({id}) => {
+      deleteCard.open();
+      deleteCard.setSubmitAction(() => {
+        api.deleteCard(id).then(() => {
+          deleteCard.close();
+          cardElement._handleTrashBtn();
+        })
+        .catch((err) => console.log(err));
+      });
+    },
+    handleAddLike: ({id}) => {
+      api.addLike(id).then((res) => {
+        cardElement.updateLikes(res.likes);
+        cardElement._handleAddLike();
+      })
+      .catch((err) => console.log(err));
+    },
+    handleRemoveLike: ({id}) => {
+      api.deleteLike(id).then((res) => {
+        cardElement.updateLikes(res.likes);
+        cardElement._handleRemoveLike();
+      })
+      .catch((err) => console.log(err));
+    },
+    userID: profileInfo.userID
+  });
+  return cardElement.generateCard();
+};
 
 // Render initial cards
-const initialCardList = new Section({
+/*const initialCardList = new Section({
   data: initialCards,
   renderer: (item) => {
     const defaultCard = new Card(item, '#element-template', {

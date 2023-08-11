@@ -1,7 +1,7 @@
 export default class Api {
-  constructor(options) {
-    this._baseURL = options.baseURL;
-    this._headers = options.headers;
+  constructor({baseURL, headers}) {
+    this._baseURL = baseURL;
+    this._headers = headers;
   }
 
   getInitialCards() {
@@ -49,7 +49,7 @@ export default class Api {
 
   getUserInfo() {
     return fetch(`${this._baseURL}/users/me`, {
-      method: 'GET',
+      method: "GET",
       headers: this._headers
     })
       .then((res) => {
@@ -60,13 +60,13 @@ export default class Api {
       });
   }
 
-  editProfileInfo(name, aboutMe) {
+  editProfileInfo(name, about) {
     return fetch(`${this._baseURL}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: aboutMe
+        about: about
       })
     })
       .then((res) => {
