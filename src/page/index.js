@@ -112,7 +112,7 @@ editProfile.setEventListeners();
 
 api.getUserInfo().then((res) => {
   profileInfo.setUserInfo({username: res.name, about: res.about});
-  profileInfo.setUserAvatar(res.avatar);
+  /*profileInfo.setUserAvatar(res.avatar);*/
   profileInfo.userID = res._id;
 })
 .then(() => {
@@ -121,11 +121,28 @@ api.getUserInfo().then((res) => {
       data: res,
       renderer: (data) => {
         const cardElement = createCard(data);
-        cardSection.addInitalItems(cardElement)
+        cardSection.addInitalItems(cardElement);
+        console.log(cardElement);
       }
     }, '#elements')
   })
 });
+
+const addCard = new PopupWithForm({
+  popupSelector: "#popup__cards",
+  submitCallback: (data) => {
+    api
+      .addNewCard(data.name, data["#url-input"])
+      .then((card) => {
+        const newCardElement = createCard(card);
+        cardSection.addItems(newCardElement);
+        addCard.close();
+      })
+      .catch((err) => console.log(err));
+  }
+});
+
+addCard.setEventListeners();
 
 function createCard(data) {
   const cardElement = new Card(data , '#element-template', {
@@ -227,12 +244,12 @@ const openProfilePopup = () => {
 
 editProfileBtn.addEventListener('click', openProfilePopup);
 
-export function createNewCard(card) {
+/*export function createNewCard(card) {
   const newCard = new Card(card, '#element-template');
   const newCardElement = newCard.generateCard();
 
   document.querySelector('#elements').prepend(newCardElement);
-}
+}*/
 
 // Input validations
 const validation = new FormValidator(document);
