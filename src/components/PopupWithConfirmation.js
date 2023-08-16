@@ -18,9 +18,11 @@ export default class PopupWithConfirmation extends Popup{
 
   renderLoading(isLoading) {
     if (isLoading) {
-      this._submitButton.textContent = 'Saving...';
+      this._submitButton.textContent = 'Guardando...';
+      this._submitButton.classList.add('popup__btn_inactive')
     } else {
-      this._submitButton.textContent = this._submitButton.dataset.textcontent;
+      this._submitButton.textContent = 'Sí';
+      this._submitButton.classList.remove('popup__btn_inactive')
     }
   }
 
@@ -28,8 +30,8 @@ export default class PopupWithConfirmation extends Popup{
     super.setEventListeners();
     this._submitButton.addEventListener('click', (evt) => {
       evt.preventDefault();
-      this.renderLoading(true);
       this._handleFormSubmit();
+      this.renderLoading(true);
     });
   }
 }

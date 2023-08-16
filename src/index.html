@@ -36,11 +36,11 @@
             <img class="popup__close-btn popup__profile-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
             <h3 class="popup__title">Editar perfil</h3>
             <div class="form__field">
-              <input id="name-input" class="form__input popup__name" placeholder="Nombre" value="Jacques Cousteau" type="text" minlength="2" maxlength="40" required>
+              <input id="name-input" class="form__input popup__name" placeholder="Nombre" value="Jacques Cousteau" name="name" type="text" minlength="2" maxlength="40" required>
               <span class="form__input-error name-input-error"></span>
             </div>
             <div class="form__field">
-              <input id="about-input" class="form__input popup__about-me" placeholder="Acerca de mi" value="Explorer" type="text" minlength="2" maxlength="200" required>
+              <input id="about-input" class="form__input popup__about-me" placeholder="Acerca de mi" value="Explorer" name="about" type="text" minlength="2" maxlength="200" required>
               <span class="form__input-error about-input-error"></span>
             </div>
             <button class="popup__btn">Guardar</button>
@@ -84,7 +84,7 @@
             <img class="popup__close-btn popup__places-close-btn" src="<%=require('./images/__close-icon.png')%>" alt="Botón para cerrar formulario"/>
             <label class="form__field">
               <input id="avatar-url" class="form__input popup__url" type="url" name="link" placeholder="Enlace a la imagen" required>
-              <span class="form__input-error url-input-error"></span>
+              <span class="form__input-error avatar-url-error"></span>
             </label>
             <button class="popup__btn">Guardar</button>
           </fieldset>
@@ -103,7 +103,7 @@
               <button class="element__trash"></button>
               <div class="element__likes">
                 <button class="element__heart"></button>
-                <p class="element__like-counter"></p>
+                <p class="element__like-counter">0</p>
               </div>
             </div>
           </div>
