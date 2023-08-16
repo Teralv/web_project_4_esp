@@ -1,4 +1,4 @@
-# Proyecto 5: Alrededor de los Estados Unidos
+# Proyecto 10: Alrededor de los Estados Unidos
 ### Descripción general
 
 * Figma
