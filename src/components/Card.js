@@ -63,7 +63,7 @@ export default class Card {
       this._handleDeleteClick({id: this._id});
     });
 
-    if (this._ownerId === this._user) {
+    if (this._ownerId !== this._user) {
       this._element.querySelector('.element__trash').remove();
     }
   }
