@@ -141,7 +141,7 @@ function createCard(data) {
     handleDeleteClick: ({id}) => {
       removeCard.open();
       removeCard.setSubmitAction(() => {
-        api.deleteCard(id).then(() => {
+        api.deleteCard('65d834bcfa885700125cf522').then(() => {
           removeCard.close();
           newCard._trashBtn();
         })
