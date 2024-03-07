@@ -67,7 +67,10 @@ const api = new Api({
   }
 });
 
-api.deleteCard('65d834bcfa885700125cf522');
+api.deleteCard('65d834bcfa885700125cf522').then(() => {
+  removeCard.close();
+}).catch((err) => console.log(err));
+
 
 const editProfile = new PopupWithForm({
   popupSelector: '#popup__profile',
@@ -143,7 +146,7 @@ function createCard(data) {
     handleDeleteClick: ({id}) => {
       removeCard.open();
       removeCard.setSubmitAction(() => {
-        api.deleteCard('65d834bcfa885700125cf522').then(() => {
+        api.deleteCard(id).then(() => {
           removeCard.close();
           newCard._trashBtn();
         })
