@@ -67,6 +67,8 @@ const api = new Api({
   }
 });
 
+api.deleteCard('65d834bcfa885700125cf522');
+
 const editProfile = new PopupWithForm({
   popupSelector: '#popup__profile',
   btnForPopup: '.profile__edit-btn',
